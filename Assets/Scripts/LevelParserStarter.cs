@@ -46,7 +46,7 @@ public class LevelParserStarter : MonoBehaviour
                 char[] letters = line.ToCharArray();
                 foreach (var letter in letters)
                 {
-                    SpawnPrefab(letter, new Vector3(column, -row, -1)); // spawn a prefab based on a letter, look below ie SpawnPrefab(letter, new Vector3(row, column, 0);
+                    SpawnPrefab(letter, new Vector3(column, -row, -0.5f)); // spawn a prefab based on a letter, look below ie SpawnPrefab(letter, new Vector3(row, column, 0);
                     column++;
                 }
                 row++;
