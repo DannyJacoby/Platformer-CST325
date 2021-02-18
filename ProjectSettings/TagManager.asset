@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Brick
+  - QuestionBox
+  - Rock
+  - Stone
+  - UI Manager
   layers:
   - Default
   - TransparentFX
