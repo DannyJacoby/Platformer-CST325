@@ -94,9 +94,5 @@ public class LevelParserStarter : MonoBehaviour
         parentTransform = newParent.transform;
         FileParser();
     }
-
-    public void OnMouseDown()
-    {
-        Destroy(this.gameObject);
-    }
+    
 }

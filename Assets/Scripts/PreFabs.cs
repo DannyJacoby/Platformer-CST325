@@ -39,4 +39,35 @@ public class PreFabs : MonoBehaviour
             }
         }
     }
+
+    private void OnMouseDown()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.collider.CompareTag("Brick"))
+            {
+                Destroy(this.gameObject);
+                _uiManager.ScoreTracker(50);
+            }
+
+            if (hit.collider.CompareTag("QuestionBox"))
+            {
+                _uiManager.CoinTracker(1);
+            }
+        }
+        
+        
+        // if (this.gameObject.CompareTag("Brick"))
+        // {
+        //     Destroy(this.gameObject);
+        //     _uiManager.ScoreTracker(50);
+        // }
+        //
+        // if (this.gameObject.CompareTag("QuestionBox"))
+        // {
+        //     _uiManager.CoinTracker(1);
+        // }
+    }
 }
