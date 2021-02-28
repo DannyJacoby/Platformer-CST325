@@ -39,7 +39,8 @@ public class EthanCharacter : MonoBehaviour
   {
     float forwardMovement = Input.GetAxis("Horizontal");
     jumping = Vector3.Dot(rb.velocity, Vector3.up) < 0.1;
-
+    animator.SetBool("Jumping", jumping);
+    
     if (jumping && Input.GetKeyDown(KeyCode.Space))
     {
       rb.velocity = Vector3.up * jumpForce;
