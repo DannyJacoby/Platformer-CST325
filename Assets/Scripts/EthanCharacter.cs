@@ -44,16 +44,9 @@ public class EthanCharacter : MonoBehaviour
     {
       rb.velocity = Vector3.up * jumpForce;
     }
-    
-    if (Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift))
-    {
-      speed = turbo;
-    }
-    else
-    {
-      speed = maxSpeed;
-    }
-    
+
+    speed = (Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift)) ? turbo : maxSpeed;
+
     if (forwardMovement != 0)
     {
       float y = (forwardMovement < 0) ? -90 : 90;
