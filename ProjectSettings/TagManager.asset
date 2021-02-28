@@ -9,6 +9,11 @@ TagManager:
   - Rock
   - Stone
   - UI Manager
+  - Enemy
+  - Goal
+  - Void
+  - Coin
+  - BrickBottom
   layers:
   - Default
   - TransparentFX

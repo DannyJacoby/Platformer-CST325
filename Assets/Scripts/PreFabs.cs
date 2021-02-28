@@ -8,6 +8,7 @@ public class PreFabs : MonoBehaviour
 
     private GameObject gm;
     private UI_Manager _uiManager;
+    public GameObject Ethan;
     
     // Start is called before the first frame update
     void Start()
@@ -26,17 +27,52 @@ public class PreFabs : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            // Debug.Log("Mario hit " + this.gameObject.name);
+            // Debug.Log("Ethan hit " + this.gameObject.name);
             if (this.gameObject.CompareTag("Brick"))
             {
                 Destroy(this.gameObject);
-                _uiManager.ScoreTracker(50);
+                _uiManager.ScoreTracker(100);
+                // Debug.Log("HIT BRICK");
             }
 
             if (this.gameObject.CompareTag("QuestionBox"))
             {
                 _uiManager.CoinTracker(1);
+                // Debug.Log("HIT QBLOCK");
             }
+
+            if (this.gameObject.CompareTag("Void"))
+            {
+                // Debug.Log("HIT VOID");
+                // reset the player 
+                // flash text "YOU DIED" in red
+            }
+
+            if (this.gameObject.CompareTag("Coin"))
+            {
+                // Debug.Log("HIT COIN");
+                Destroy(this.gameObject);
+                _uiManager.CoinTracker(1);
+            }
+
+            if (this.gameObject.CompareTag("Enemy"))
+            {
+                Debug.Log("Ethan hit " + this.gameObject.name);
+                _uiManager.ResetTheGame(false);
+            }
+
+            if (this.gameObject.CompareTag("Void"))
+            {
+                Debug.Log("Ethan hit " + this.gameObject.name);
+               _uiManager.ResetTheGame(false); 
+            }
+
+            if (this.gameObject.CompareTag("Goal"))
+            {
+                Debug.Log("Ethan hit " + this.gameObject.name);
+                _uiManager.ResetTheGame(true);
+            }
+            
         }
     }
 
@@ -57,17 +93,5 @@ public class PreFabs : MonoBehaviour
                 _uiManager.CoinTracker(1);
             }
         }
-        
-        
-        // if (this.gameObject.CompareTag("Brick"))
-        // {
-        //     Destroy(this.gameObject);
-        //     _uiManager.ScoreTracker(50);
-        // }
-        //
-        // if (this.gameObject.CompareTag("QuestionBox"))
-        // {
-        //     _uiManager.CoinTracker(1);
-        // }
     }
 }

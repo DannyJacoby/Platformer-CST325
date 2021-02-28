@@ -7,26 +7,44 @@ using UnityEngine;
 public class LevelParserStarter : MonoBehaviour
 {
     public string filename;
-
+    private string nameOfFile;
     public GameObject Rock;
-
     public GameObject Brick;
-
     public GameObject QuestionBox;
-
     public GameObject Stone;
+    public GameObject Gap;
+    public GameObject Castle;
+    public GameObject Window;
+    public GameObject Water1;
+    public GameObject Water2;
+    public GameObject Coin;
+    public GameObject KoopaShell;
+    public GameObject FlagPole;
 
     public Transform parentTransform;
+    
+    private GameObject gm;
+    private UI_Manager _uiManager;
+
+    void Awake()
+    {
+        gm = GameObject.FindWithTag("UI Manager");
+        _uiManager = gm.GetComponent<UI_Manager>();
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
         RefreshParse();
+        nameOfFile = filename.Replace(".txt", "");
+        _uiManager.updateWorldName("WORLD" + '\n' + nameOfFile);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("return"))
         {
+            Debug.Log("RESETING LEVEL");
             RefreshParse();
         }
     }
@@ -74,12 +92,43 @@ public class LevelParserStarter : MonoBehaviour
             case 's': //Debug.Log("Spawn OBJ " + currPull + "  Stone @ " + positionToSpawn);
                 ToSpawn = Stone;
                 break;
-            //default: Debug.Log("Default Entered"); break;
-            default: return;
+            case 'B':
+                ToSpawn = KoopaShell;
+                break;
+            case 'w':
+                ToSpawn = Water1;
+                break;
+            case 'm':
+                ToSpawn = Water2;
+                break;
+            case 'c':
+                ToSpawn = Castle;
+                break;
+            case 'W':
+                ToSpawn = Window;
+                break;
+            case 'G':
+                ToSpawn = FlagPole;
+                break;
+            case 'C':
+                ToSpawn = Coin;
+                break;
+            default: ToSpawn = null; break;
+            // default: return;
         }
 
-        ToSpawn = GameObject.Instantiate(ToSpawn, parentTransform);
-        ToSpawn.transform.localPosition = positionToSpawn;
+        if (ToSpawn != null)
+        {
+            ToSpawn = GameObject.Instantiate(ToSpawn, parentTransform);
+            ToSpawn.transform.localPosition = positionToSpawn;
+        }
+        else
+        {
+            if (spot != ' ')
+            {
+                Debug.Log("ENCOUNTERED UNKNOWN OF " + spot);
+            }
+        }
     }
 
     public void RefreshParse()

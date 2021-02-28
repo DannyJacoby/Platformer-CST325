@@ -8,9 +8,9 @@ public class CameraMirror : MonoBehaviour
 
   void Update()
   {
-    Vector3 pos = new Vector3(transform.position.x, transform.position.y, character.position.z);
+    Vector3 pos = new Vector3(character.position.x, 7.6f, -19.5f);
 
-    transform.position = pos;
+    this.transform.position = pos;
   }
 
 }

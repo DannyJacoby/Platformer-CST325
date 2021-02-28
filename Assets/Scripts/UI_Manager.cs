@@ -5,13 +5,16 @@ using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Debug = UnityEngine.Debug;
 
 public class UI_Manager : MonoBehaviour
 {
+    public GameObject Ethan;
     private static readonly TimeSpan MinInterval = TimeSpan.FromSeconds(3);
     private readonly Stopwatch stopwatch = new Stopwatch(); // Stopped initially
-    
-    public float timeRemaining = 300f;
+
+    public float totalTime = 100;
+    public float timeRemaining = 100f;
     
     private const int ScoreTextLength = 6;
     private const int CoinsTextLength = 3;
@@ -21,6 +24,7 @@ public class UI_Manager : MonoBehaviour
     public TextMeshProUGUI coinsText;
     public TextMeshProUGUI worldMapText;
     public TextMeshProUGUI timeText;
+    public TextMeshProUGUI resultText;
 
     // Start is called before the first frame update
     void Start()
@@ -39,9 +43,16 @@ public class UI_Manager : MonoBehaviour
         }
         else if(_timerIsRunning)
         {
-            // Debug.Log("TIME'S UP");
             timeRemaining = 0;
             _timerIsRunning = false;
+            ResetTheGame(false);
+        }
+        
+        if ( Math.Floor(totalTime - timeRemaining) >= 3)
+        {
+            // Debug.Log("TIMES UP");
+            setResult(" ");
+            resultText.color = Color.black;
         }
     }
 
@@ -94,5 +105,33 @@ public class UI_Manager : MonoBehaviour
         {
             stopwatch.Reset();
         }
+    }
+
+    public void updateWorldName(string worldName)
+    {
+        worldMapText.SetText(worldName);
+    }
+
+    public void setResult(string result)
+    {
+        resultText.SetText(result);
+    }
+
+    public void ResetTheGame(bool won)
+    {
+        string result = (won) ? "YOU WON" : "YOU LOST";
+        setResult(result);
+        resultText.color = (won) ? Color.green : Color.red;
+
+
+        timeRemaining = 100f;
+        timeText.SetText("TIME\n" + timeRemaining);
+        _timerIsRunning = true;
+        
+        scoreText.SetText("MARIO\n000000");
+        
+        coinsText.SetText("x000");
+
+        Ethan.transform.position = new Vector3(16f,2f,-0.5f);
     }
 }
