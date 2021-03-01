@@ -69,19 +69,19 @@ public class PreFabs : MonoBehaviour
 
             if (this.gameObject.CompareTag("Enemy"))
             {
-                Debug.Log("Ethan hit " + this.gameObject.name);
+                // Debug.Log("Ethan hit " + this.gameObject.name);
                 _uiManager.ResetTheGame(false);
             }
 
             if (this.gameObject.CompareTag("Void"))
             {
-                Debug.Log("Ethan hit " + this.gameObject.name);
+                // Debug.Log("Ethan hit " + this.gameObject.name);
                _uiManager.ResetTheGame(false); 
             }
 
             if (this.gameObject.CompareTag("Goal"))
             {
-                Debug.Log("Ethan hit " + this.gameObject.name);
+                // Debug.Log("Ethan hit " + this.gameObject.name);
                 _uiManager.ResetTheGame(true);
             }
             

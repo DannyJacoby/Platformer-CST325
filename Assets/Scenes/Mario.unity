@@ -165,7 +165,8 @@ MonoBehaviour:
   characterTransform: {fileID: 3107012}
   speed: 10
   jumpForce: 6
-  turbo: 30
+  turbo: 20
+  jumping: 0
 --- !u!33 &3107015
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -413,6 +414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ethan: {fileID: 3107010}
+  lvlParser: {fileID: 0}
   totalTime: 100
   timeRemaining: 100
   scoreText: {fileID: 625651771}

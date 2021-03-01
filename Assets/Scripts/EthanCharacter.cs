@@ -14,9 +14,9 @@ public class EthanCharacter : MonoBehaviour
   public float speed = 10f;
   private float maxSpeed;
   public float jumpForce = 6f;
-  public float turbo = 30f;
+  public float turbo = 20f;
   // [Range(-2, 2)] public float speed = 0;
-  private bool jumping = false;
+  public bool jumping = false;
   // private float lastYFrame = 0;
 
   // enum AnimationParameters
@@ -38,16 +38,18 @@ public class EthanCharacter : MonoBehaviour
   void FixedUpdate()
   {
     float forwardMovement = Input.GetAxis("Horizontal");
-    jumping = Vector3.Dot(rb.velocity, Vector3.up) < 0.1;
-    animator.SetBool("Jumping", jumping);
-    
+    // Debug.Log(Vector3.Dot(rb.velocity, Vector3.up));
+    jumping = Vector3.Dot(rb.velocity, Vector3.up) < 0.5;
+    // animator.SetBool("Jumping", jumping);
+    //
     if (jumping && Input.GetKeyDown(KeyCode.Space))
     {
       rb.velocity = Vector3.up * jumpForce;
+      animator.SetFloat("Speed", 3);
     }
 
     speed = (Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift)) ? turbo : maxSpeed;
-
+    
     if (forwardMovement != 0)
     {
       float y = (forwardMovement < 0) ? -90 : 90;
@@ -60,7 +62,14 @@ public class EthanCharacter : MonoBehaviour
       rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, 0);
     }
     
-    animator.SetFloat("Speed", Mathf.Abs(forwardMovement));
+    if(Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift))
+    {
+      animator.SetFloat("Speed", 2);
+    }
+    else
+    {
+      animator.SetFloat("Speed", Mathf.Abs(forwardMovement));
+    }
     
     // if (jump) rb.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
     //
@@ -81,10 +90,4 @@ public class EthanCharacter : MonoBehaviour
     // transform.Translate(  Time.deltaTime * -horizontal * modifier * transform.right);
   }
 
-  public void resetEthan()
-  {
-    this.transform.position = startPosition;
-    
-  }
-  
 }

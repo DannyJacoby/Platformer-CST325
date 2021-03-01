@@ -10,6 +10,7 @@ using Debug = UnityEngine.Debug;
 public class UI_Manager : MonoBehaviour
 {
     public GameObject Ethan;
+    public LevelParserStarter lvlParser;
     private static readonly TimeSpan MinInterval = TimeSpan.FromSeconds(3);
     private readonly Stopwatch stopwatch = new Stopwatch(); // Stopped initially
 
@@ -133,5 +134,10 @@ public class UI_Manager : MonoBehaviour
         coinsText.SetText("x000");
 
         Ethan.transform.position = new Vector3(16f,2f,-0.5f);
+
+        if (won)
+        {
+            lvlParser.RefreshParse();
+        }
     }
 }
