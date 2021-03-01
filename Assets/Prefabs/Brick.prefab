@@ -42,8 +42,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8365988, y: 0.09217155, z: 0.8594941}
-  m_Center: {x: 0.05135593, y: -0.45384955, z: -0.01742047}
+  m_Size: {x: 1, y: 0.20675972, z: 1}
+  m_Center: {x: 0, y: -0.39882624, z: 0}
 --- !u!1 &8806416558074017095
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,8 +140,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.96447647, z: 1}
-  m_Center: {x: -0, y: 0.017761752, z: -0}
+  m_Size: {x: 1, y: 0.39460212, z: 1}
+  m_Center: {x: -0, y: 0.3015482, z: -0}
 --- !u!54 &399302686325840135
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -171,3 +171,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ethan: {fileID: 100168, guid: b235179bd2a63d1468dd430670338c55, type: 3}
+  topOfBrick: {fileID: -8457372809039823788}
+  botOfBrick: {fileID: 7877597207410577617}

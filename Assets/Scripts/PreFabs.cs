@@ -9,6 +9,9 @@ public class PreFabs : MonoBehaviour
     private GameObject gm;
     private UI_Manager _uiManager;
     public GameObject Ethan;
+
+    public BoxCollider topOfBrick;
+    public BoxCollider botOfBrick;
     
     // Start is called before the first frame update
     void Start()
@@ -30,9 +33,18 @@ public class PreFabs : MonoBehaviour
             // Debug.Log("Ethan hit " + this.gameObject.name);
             if (this.gameObject.CompareTag("Brick"))
             {
-                Destroy(this.gameObject);
-                _uiManager.ScoreTracker(100);
-                // Debug.Log("HIT BRICK");
+                if (this.transform.position.y - other.collider.transform.position.y < 0)
+                {
+                    Debug.Log("HIT TOP OF BRICK");
+                }
+                else if (this.transform.position.y - other.collider.transform.position.y > 0)
+                {
+                    Debug.Log("HIT BOTTOM OF BRICK");
+                    Destroy(this.gameObject);
+                    _uiManager.ScoreTracker(100);
+                }
+                // Destroy(this.gameObject);
+                // _uiManager.ScoreTracker(100);
             }
 
             if (this.gameObject.CompareTag("QuestionBox"))
